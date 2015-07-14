@@ -18,4 +18,4 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
-    clastic_site_name: Clastic
+    clastic_site_name: WebProxy

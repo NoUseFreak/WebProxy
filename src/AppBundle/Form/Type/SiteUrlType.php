@@ -23,7 +23,9 @@ class SiteUrlType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('url');
+        $builder->add('url', null, [
+          'label' => false,
+        ]);
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

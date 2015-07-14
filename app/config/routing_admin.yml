@@ -1,0 +1,2 @@
+clastic_backoffice:
+    resource: "@ClasticBackofficeBundle/Resources/config/routing.xml"

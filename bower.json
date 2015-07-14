@@ -1,0 +1,17 @@
+{
+  "name": "ClasticProject",
+  "version": "0.0.0",
+  "authors": [
+    "Dries De Peuter <dries@nousefreak.be>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "fontawesome": "~4.2.0",
+    "clastic_backoffice": "./vendor/clastic/backoffice-bundle/bower.json",
+    "clastic_menu": "./vendor/clastic/menu-bundle/bower.json",
+    "clastic_alias": "./vendor/clastic/alias-bundle/bower.json",
+    "clastic_media": "./vendor/clastic/media-bundle/bower.json"
+  }
+}

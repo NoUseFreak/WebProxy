@@ -1,0 +1,17 @@
+/web/bundles/
+/web/vendor/
+/web/build/
+/web/uploads/*
+!/web/uploads/.gitkeep
+/app/bootstrap.php.cache
+/app/cache/*
+/app/config/parameters.yml
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+/app/phpunit.xml
+/build/
+/vendor/
+/node_modules/
+/bin/
+/composer.phar

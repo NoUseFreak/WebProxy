@@ -1,0 +1,8 @@
+app:
+  build: docker
+  volumes:
+    - .:/var/www/html
+    - /var/run/docker.sock:/tmp/docker.sock
+  privileged: true
+  ports:
+    - 8000:80

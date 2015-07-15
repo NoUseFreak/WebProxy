@@ -29,10 +29,17 @@ class Site implements NodeReferenceInterface
      */
     private $urls;
 
+    /**
+     * @var ArrayCollection
+     */
+    private $backends;
+
     public function __construct()
     {
-        $this->urls = new ArrayCollection();
+        $this->urls     = new ArrayCollection();
+        $this->backends = new ArrayCollection();
     }
+
     /**
      * Get id
      *
@@ -79,6 +86,26 @@ class Site implements NodeReferenceInterface
         return $this->urls;
     }
 
+    public function addBackend(SiteBackend $url)
+    {
+        $url->setSite($this);
+
+        $this->backends->add($url);
+    }
+
+    public function removeBackend(SiteBackend $url)
+    {
+        $this->backends->removeElement($url);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBackends()
+    {
+        return $this->backends;
+    }
+    
     /**
      * @param SiteUrl[] $urls
      */

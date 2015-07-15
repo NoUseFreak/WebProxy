@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Clastic/BackofficeBundle.git",
-                "reference": "3897a760ff6dec1c551167b6e22900c9af7b6427"
+                "reference": "abc5904ee97716e304a353800a5112988da6407a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Clastic/BackofficeBundle/zipball/3897a760ff6dec1c551167b6e22900c9af7b6427",
-                "reference": "3897a760ff6dec1c551167b6e22900c9af7b6427",
+                "url": "https://api.github.com/repos/Clastic/BackofficeBundle/zipball/abc5904ee97716e304a353800a5112988da6407a",
+                "reference": "abc5904ee97716e304a353800a5112988da6407a",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 }
             ],
             "description": "Clastic Backoffice bundle",
-            "time": "2015-04-29 20:03:55"
+            "time": "2015-07-15 18:47:37"
         },
         {
             "name": "clastic/core-bundle",

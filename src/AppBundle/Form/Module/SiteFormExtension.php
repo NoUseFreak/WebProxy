@@ -27,7 +27,9 @@ class SiteFormExtension extends AbstractNodeTypeExtension
     {
         $this->getTabHelper($builder)
           ->findTab('general')
-          ->add('description', 'textarea');
+          ->add('description', 'textarea', [
+              'required' => false,
+          ]);
 
         $this->getTabHelper($builder)
           ->createTab('url_tab', 'Url', [
@@ -45,12 +47,9 @@ class SiteFormExtension extends AbstractNodeTypeExtension
           ->createTab('backend_tab', 'Backend', [
             'position' => 'first',
           ])
-          ->add('backends', 'collection',[
-            'type' => new SiteBackendType(),
-            'allow_add' => true,
-            'allow_delete' => true,
-            'by_reference' => false,
-            'cascade_validation' => true,
+          ->add('upstream', 'entity', [
+              'class' => 'AppBundle\Entity\Upstream',
+              'property' => 'node.title',
           ]);
 
         $builder->addEventSubscriber($this->siteFormListener);

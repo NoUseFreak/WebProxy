@@ -30,14 +30,13 @@ class Site implements NodeReferenceInterface
     private $urls;
 
     /**
-     * @var ArrayCollection
+     * @var Upstream
      */
-    private $backends;
+    private $upstream;
 
     public function __construct()
     {
         $this->urls     = new ArrayCollection();
-        $this->backends = new ArrayCollection();
     }
 
     /**
@@ -86,26 +85,22 @@ class Site implements NodeReferenceInterface
         return $this->urls;
     }
 
-    public function addBackend(SiteBackend $url)
+    /**
+     * @return Upstream
+     */
+    public function getUpstream()
     {
-        $url->setSite($this);
-
-        $this->backends->add($url);
-    }
-
-    public function removeBackend(SiteBackend $url)
-    {
-        $this->backends->removeElement($url);
+        return $this->upstream;
     }
 
     /**
-     * @return ArrayCollection
+     * @param Upstream $upstream
      */
-    public function getBackends()
+    public function setUpstream($upstream)
     {
-        return $this->backends;
+        $this->upstream = $upstream;
     }
-    
+
     /**
      * @param SiteUrl[] $urls
      */

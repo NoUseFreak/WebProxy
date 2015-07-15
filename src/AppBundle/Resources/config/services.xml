@@ -5,6 +5,10 @@
         <parameter key="app_bundle.site.module.class">AppBundle\Module\SiteModule</parameter>
         <parameter key="app_bundle.site.module.form_extension.class">AppBundle\Form\Module\SiteFormExtension</parameter>
         <parameter key="app.site.node_subscriber.class">AppBundle\EventListener\SiteNodeFormListener</parameter>
+        <parameter key="app_bundle.server.module.class">AppBundle\Module\ServerModule</parameter>
+        <parameter key="app_bundle.server.module.form_extension.class">AppBundle\Form\Module\ServerFormExtension</parameter>
+        <parameter key="app_bundle.upstream.module.class">AppBundle\Module\UpstreamModule</parameter>
+        <parameter key="app_bundle.upstream.module.form_extension.class">AppBundle\Form\Module\UpstreamFormExtension</parameter>
     </parameters>
     <services>
         <service id="app_bundle.site.module" class="%app_bundle.site.module.class%">
@@ -15,7 +19,17 @@
             <argument type="service" id="app.site.node_subscriber"/>
         </service>
         <service id="app.site.node_subscriber" class="%app.site.node_subscriber.class%">
-            <tag name="kernel.event_subscriber" />
+            <tag name="kernel.event_subscriber"/>
         </service>
+        <service id="app_bundle.server.module" class="%app_bundle.server.module.class%">
+            <tag name="clastic.module" node_module="true" alias="server"/>
+            <tag name="clastic.node_form" build_service="app_bundle.server.module.form_extension"/>
+        </service>
+        <service id="app_bundle.server.module.form_extension" class="%app_bundle.server.module.form_extension.class%"/>
+        <service id="app_bundle.upstream.module" class="%app_bundle.upstream.module.class%">
+            <tag name="clastic.module" node_module="true" alias="upstream"/>
+            <tag name="clastic.node_form" build_service="app_bundle.upstream.module.form_extension"/>
+        </service>
+        <service id="app_bundle.upstream.module.form_extension" class="%app_bundle.upstream.module.form_extension.class%"/>
     </services>
 </container>

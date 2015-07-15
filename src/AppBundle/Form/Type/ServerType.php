@@ -11,35 +11,42 @@ namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * @author Dries De Peuter <dries@nousefreak.be>
  */
-class SiteBackendType extends AbstractType
+class ServerType extends AbstractType
 {
+
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->add('url', null, [
-          'label' => false,
-        ]);
-    }
-
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-          'data_class' => 'AppBundle\Entity\SiteBackend',
+          'compound' => false,
+          'label' => false,
+          'class' => 'AppBundle\Entity\Server',
+          'property' => 'node.title'
         ));
     }
 
     /**
      * {@inheritdoc}
      */
+    public function getParent()
+    {
+        return 'entity';
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
-        return 'sitebackend';
+        return 'server';
     }
 }

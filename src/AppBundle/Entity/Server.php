@@ -2,13 +2,17 @@
 
 namespace AppBundle\Entity;
 
+use Clastic\NodeBundle\Node\NodeReferenceInterface;
+use Clastic\NodeBundle\Node\NodeReferenceTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * SiteBackend
+ * Upstream
  */
-class SiteBackend
+class Server implements NodeReferenceInterface
 {
+    use NodeReferenceTrait;
+
     /**
      * @var integer
      */
@@ -20,9 +24,9 @@ class SiteBackend
     private $url;
 
     /**
-     * @var Site
+     * @var array
      */
-    private $site;
+    private $options;
 
 
     /**
@@ -39,7 +43,7 @@ class SiteBackend
      * Set url
      *
      * @param string $url
-     * @return SiteBackend
+     * @return Server
      */
     public function setUrl($url)
     {
@@ -59,18 +63,25 @@ class SiteBackend
     }
 
     /**
-     * @return Site
+     * Set options
+     *
+     * @param array $options
+     * @return Upstream
      */
-    public function getSite()
+    public function setOptions($options)
     {
-        return $this->site;
+        $this->options = $options;
+
+        return $this;
     }
 
     /**
-     * @param Site $site
+     * Get options
+     *
+     * @return array 
      */
-    public function setSite($site)
+    public function getOptions()
     {
-        $this->site = $site;
+        return $this->options;
     }
 }

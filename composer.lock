@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6dac4dc9497bf42846a881e046ea76e5",
+    "hash": "81d45c4e6901a5f61bea2d160de0d7cf",
     "packages": [
         {
             "name": "clastic/backoffice-bundle",
@@ -1590,6 +1590,60 @@
             "time": "2012-12-21 11:40:51"
         },
         {
+            "name": "romanpitak/nginx-config-processor",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/romanpitak/Nginx-Config-Processor.git",
+                "reference": "e84e4a0875757721f3d9547093a48a91764b367c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/romanpitak/Nginx-Config-Processor/zipball/e84e4a0875757721f3d9547093a48a91764b367c",
+                "reference": "e84e4a0875757721f3d9547093a48a91764b367c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RomanPitak\\Nginx\\Config\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Piták",
+                    "email": "roman@pitak.net",
+                    "homepage": "http://pitak.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Nginx configuration files processor.",
+            "homepage": "https://github.com/romanpitak/Nginx-Config-Processor",
+            "keywords": [
+                "conf",
+                "conf file",
+                "config",
+                "config file",
+                "configuration",
+                "configuration file",
+                "create",
+                "creator",
+                "manager",
+                "nginx",
+                "parser",
+                "php",
+                "processor"
+            ],
+            "time": "2014-09-21 15:49:58"
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "v3.0.30",
             "target-dir": "Sensio/Bundle/DistributionBundle",
@@ -2268,6 +2322,60 @@
                 "templating"
             ],
             "time": "2015-06-06 23:31:24"
+        },
+        {
+            "name": "videlalvaro/php-amqplib",
+            "version": "v2.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/videlalvaro/php-amqplib.git",
+                "reference": "3eb257444961f1ca7e6415c6e6f3c3e7a8e1d3fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/videlalvaro/php-amqplib/zipball/3eb257444961f1ca7e6415c6e6f3c3e7a8e1d3fa",
+                "reference": "3eb257444961f1ca7e6415c6e6f3c3e7a8e1d3fa",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "ext-sockets": "Use AMQPSocketConnection"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "PhpAmqpLib": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Alvaro Videla"
+                }
+            ],
+            "description": "This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
+            "homepage": "https://github.com/videlalvaro/php-amqplib/",
+            "keywords": [
+                "message",
+                "queue",
+                "rabbitmq"
+            ],
+            "time": "2015-06-16 08:18:39"
         },
         {
             "name": "white-october/pagerfanta-bundle",

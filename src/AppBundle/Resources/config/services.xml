@@ -5,10 +5,16 @@
         <parameter key="app_bundle.site.module.class">AppBundle\Module\SiteModule</parameter>
         <parameter key="app_bundle.site.module.form_extension.class">AppBundle\Form\Module\SiteFormExtension</parameter>
         <parameter key="app.site.node_subscriber.class">AppBundle\EventListener\SiteNodeFormListener</parameter>
+        <parameter key="app.site.queue_subscriber.class">AppBundle\EventListener\QueueListener</parameter>
         <parameter key="app_bundle.server.module.class">AppBundle\Module\ServerModule</parameter>
         <parameter key="app_bundle.server.module.form_extension.class">AppBundle\Form\Module\ServerFormExtension</parameter>
         <parameter key="app_bundle.upstream.module.class">AppBundle\Module\UpstreamModule</parameter>
         <parameter key="app_bundle.upstream.module.form_extension.class">AppBundle\Form\Module\UpstreamFormExtension</parameter>
+        <parameter key="app_bundle.helper.queue.class">AppBundle\Helper\QueueHelper</parameter>
+        <parameter key="app_bundle.repo.upstream.class">AppBundle\Entity\UpstreamRepository</parameter>
+        <parameter key="app_bundle.repo.upstream.factory_argument">AppBundle:Upstream</parameter>
+        <parameter key="app_bundle.repo.site.class">AppBundle\Entity\SiteRepository</parameter>
+        <parameter key="app_bundle.repo.site.factory_argument">AppBundle:Site</parameter>
     </parameters>
     <services>
         <service id="app_bundle.site.module" class="%app_bundle.site.module.class%">
@@ -21,6 +27,10 @@
         <service id="app.site.node_subscriber" class="%app.site.node_subscriber.class%">
             <tag name="kernel.event_subscriber"/>
         </service>
+        <service id="app.site.queue_subscriber" class="%app.site.queue_subscriber.class%">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="app_bundle.helper.queue"/>
+        </service>
         <service id="app_bundle.server.module" class="%app_bundle.server.module.class%">
             <tag name="clastic.module" node_module="true" alias="server"/>
             <tag name="clastic.node_form" build_service="app_bundle.server.module.form_extension"/>
@@ -31,5 +41,29 @@
             <tag name="clastic.node_form" build_service="app_bundle.upstream.module.form_extension"/>
         </service>
         <service id="app_bundle.upstream.module.form_extension" class="%app_bundle.upstream.module.form_extension.class%"/>
+        <service id="app_bundle.helper.queue" class="%app_bundle.helper.queue.class%" lazy="true"/>
+
+        <service id="app_bundle.repo.upstream" class="%app_bundle.repo.upstream.class%" factory-service="doctrine" factory-method="getRepository">
+            <argument>%app_bundle.repo.upstream.factory_argument%</argument>
+        </service>
+        <service id="app_bundle.repo.site" class="%app_bundle.repo.site.class%" factory-service="doctrine" factory-method="getRepository">
+            <argument>%app_bundle.repo.site.factory_argument%</argument>
+        </service>
+
+        <service id="app_bundle.config_writer" class="AppBundle\Generator\ConfigWriter"/>
+
+        <service id="app_bundle.proxy_generator" class="AppBundle\Generator\ProxyGenerator">
+            <argument type="service" id="app_bundle.config_writer"/>
+            <argument type="service" id="app_bundle.upstream_generator"/>
+            <argument type="service" id="app_bundle.vhost_generator"/>
+        </service>
+        <service id="app_bundle.upstream_generator" class="AppBundle\Generator\UpstreamGenerator">
+            <argument type="service" id="app_bundle.repo.upstream"/>
+            <argument type="service" id="app_bundle.config_writer"/>
+        </service>
+        <service id="app_bundle.vhost_generator" class="AppBundle\Generator\VhostGenerator">
+            <argument type="service" id="app_bundle.repo.site"/>
+            <argument type="service" id="app_bundle.config_writer"/>
+        </service>
     </services>
 </container>

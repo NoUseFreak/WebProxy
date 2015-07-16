@@ -24,7 +24,9 @@
         "clastic/user-bundle": "dev-master",
         "clastic/node-bundle": "dev-master",
         "clastic/security-bundle": "dev-master",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "videlalvaro/php-amqplib": "^2.5",
+        "romanpitak/nginx-config-processor": "^0.1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

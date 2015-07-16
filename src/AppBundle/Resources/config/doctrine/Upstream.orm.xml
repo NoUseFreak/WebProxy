@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="AppBundle\Entity\Upstream">
+  <entity repository-class="AppBundle\Entity\UpstreamRepository" name="AppBundle\Entity\Upstream">
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
+    <many-to-one field="node" target-entity="Clastic\NodeBundle\Entity\Node">
+      <cascade><cascade-all/></cascade>
+      <join-column name="node_id" referenced-column-name="id" />
+    </many-to-one>
     <many-to-many field="servers" target-entity="Server">
       <join-table name="upstream_server">
         <join-columns>
@@ -14,9 +18,5 @@
         </inverse-join-columns>
       </join-table>
     </many-to-many>
-    <many-to-one field="node" target-entity="Clastic\NodeBundle\Entity\Node">
-      <cascade><cascade-all/></cascade>
-      <join-column name="node_id" referenced-column-name="id" />
-    </many-to-one>
   </entity>
 </doctrine-mapping>
